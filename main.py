@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton , QMainWindow , QFileDialog , QLabel ,QGridLayout , QSpinBox
 from PyQt5.QtGui import QPixmap ,QColor
+from histogram_dialog import HistogramDialog
 
 
 class Main(QMainWindow):
@@ -33,6 +34,7 @@ class Main(QMainWindow):
         self.setWindowTitle("GreyScale Project")
         self.search_image_button.clicked.connect(self.search_image_clicked)
         self.bright_button.clicked.connect(self.bright_button_clicked)
+        self.histogram_generator.clicked.connect(self.generate_histogram)
         self.show()
 
     def search_image_clicked(self):
@@ -66,13 +68,17 @@ class Main(QMainWindow):
                 red = self.adjust_to_limit(cur_color.red() + constant)
                 green = self.adjust_to_limit(cur_color.green() + constant)
                 blue = self.adjust_to_limit(cur_color.blue() + constant)
-                value = QColor(red-constant,green-constant,blue-constant)
+                value = QColor(red,green,blue)
                 qimage.setPixel(x,y,value.rgb())
         new_pixmap = QPixmap.fromImage(qimage)
         self.modified_image.setPixmap(new_pixmap)
     
+    def generate_histogram(self):
+        dialog = HistogramDialog(self, self.imported_image ,self.modified_image) 
+        dialog.show()
+    
     def adjust_to_limit(self, value ):
-        if value >= 255:
+        if value > 255:
             return 255
         elif value < 0:
             return 0
