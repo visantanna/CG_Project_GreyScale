@@ -5,9 +5,13 @@ import matplotlib.pyplot as plt
 class HistogramDialog(QDialog):
     def __init__(self,main_window , image , modified_image):
         super().__init__(main_window)
-        self.setMinimumSize(1000,420)
+        self.setMinimumSize(1000,400)
         hist_original = QLabel(self)
         hist_modified = QLabel(self)
+        label_hist_original = QLabel("Original",self)
+        label_hist_original.move(220,20)
+        label_hist_modified = QLabel("Modificado",self)
+        label_hist_modified.move(700,20)
         hist_original.resize(450,360)
         hist_modified.resize(450,360)
         hist_original.move(20,50)
