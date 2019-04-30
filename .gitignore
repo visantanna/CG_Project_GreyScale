@@ -1,2 +1,7 @@
 .vscode
+modified.png
+original.png
+.pylintrc
+__pycache__
+/images/*
 

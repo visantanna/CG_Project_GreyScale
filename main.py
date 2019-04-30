@@ -67,7 +67,8 @@ class Main(QMainWindow):
             self.spinner_label.show()
             self.histogram_generator.show()
             self.reduction_combobox.show()
-            self.add_combo_itens(self.reduction_combobox)
+            if(self.reduction_combobox.count() <= 0 ):
+                self.add_combo_itens(self.reduction_combobox)
 
 
     def bright_button_clicked(self):
@@ -89,7 +90,7 @@ class Main(QMainWindow):
         method = None 
         new_pixmap = None
         item_selected = self.reduction_combobox.currentText()
-        valid_arguments = ["média" , "mediana"]
+        valid_arguments = ["média" , "mediana", "quantificação", "máscara"]
         argument = item_selected.lower()
         if argument in valid_arguments:
             method =FactoryNoiseReductionMethods().get_method_class(argument , self.imported_image.pixmap().toImage())
@@ -114,6 +115,8 @@ class Main(QMainWindow):
         combo.addItem("Selecione")
         combo.addItem("Média")
         combo.addItem("Mediana")
+        combo.addItem("Quantificação")
+        combo.addItem("Máscara")
         combo.setCurrentIndex(0)
 
 if __name__ == "__main__":
