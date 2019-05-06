@@ -116,7 +116,12 @@ class Main(QMainWindow):
         combo.addItem("Média")
         combo.addItem("Mediana")
         combo.addItem("Quantificação")
-        combo.addItem("Máscara")
+        combo.addItem("Passa Alta")
+        combo.addItem("Sobel Vertical")
+        combo.addItem("Sobel Horizontal")
+        combo.addItem("Duplo Sobel")
+        combo.addItem("Gradiente Horizontal")
+        combo.addItem("Gradiente Vertical")
         combo.setCurrentIndex(0)
 
 if __name__ == "__main__":

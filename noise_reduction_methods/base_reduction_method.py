@@ -15,11 +15,10 @@ class BaseReductionMethod():
         cloned_image = self.original_image.copy()
         for x in range(0 , self.original_image.width()):
             for y in range(0 , self.original_image.height()):
-                x_start_mask =  self.get_valid_x(x-self.mask)
-                #range is exclusive in the end , so a got a "plus one" on the end_masks
-                x_end_mask = self.get_valid_x(x+self.mask+1)
-                y_start_mask = self.get_valid_y(y-self.mask)
-                y_end_mask = self.get_valid_y(y+self.mask+1)
+                x_start_mask =  self.get_valid_x(x-self.mask.left)
+                x_end_mask = self.get_valid_x(x+self.mask.right+1)
+                y_start_mask = self.get_valid_y(y-self.mask.up)
+                y_end_mask = self.get_valid_y(y+self.mask.down+1)
                 for x_mask in range(x_start_mask , x_end_mask ):
                     for y_mask in range(y_start_mask, y_end_mask): 
                         current_pixel = self.original_image.pixelColor(x_mask, y_mask)
