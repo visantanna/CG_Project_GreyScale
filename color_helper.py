@@ -1,3 +1,4 @@
+from PyQt5.QtGui import qRgb , QColor
 class ColorHelper():
     @staticmethod
     #value can be a int or a list[3] int
@@ -18,10 +19,10 @@ class ColorHelper():
             return 0
         else: 
             return color
-    
+    @staticmethod
     def sum_pixels(pixel1,pixel2):
-        pixel1_rgb = pixel1.rgb()
-        pixel2_rgb = pixel2.rgb()
+        pixel1_rgb = QColor(pixel1)
+        pixel2_rgb = QColor(pixel2)
         new_rgb = [pixel1_rgb.red() + pixel2_rgb.red(),
                    pixel1_rgb.green() + pixel2_rgb.green() ,
                    pixel1_rgb.blue() + pixel2_rgb.blue() ]

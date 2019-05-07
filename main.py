@@ -90,7 +90,7 @@ class Main(QMainWindow):
         method = None 
         new_pixmap = None
         item_selected = self.reduction_combobox.currentText()
-        valid_arguments = ["média" , "mediana", "quantificação", "máscara"]
+        valid_arguments = ["média" , "mediana", "quantificação", "passa alta" , "sobel vertical", "sobel horizontal", "duplo sobel", "gradiente horizontal" , "gradiente vertical"]
         argument = item_selected.lower()
         if argument in valid_arguments:
             method =FactoryNoiseReductionMethods().get_method_class(argument , self.imported_image.pixmap().toImage())
